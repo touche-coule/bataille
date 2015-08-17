@@ -1,6 +1,6 @@
 ﻿namespace GameElement
 {
-    class joueur
+    public class joueur
     {
         public string Pseudo { get; set; }
         public grille grille { get; set; }

@@ -51,6 +51,12 @@
     <Folder Include="Libs\" />
     <Folder Include="Mods\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameElement\GameElement.csproj">
+      <Project>{c4f389c2-0b56-47fc-b568-12c6a323447d}</Project>
+      <Name>GameElement</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
