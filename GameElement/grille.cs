@@ -8,6 +8,7 @@
         //la grilles contient des cellules qui ont une ordonnée et une abcisse
         public cellule[,] tab = new cellule[horizontal, vertical];
         // on crée la grille avec le nombre de colonnes et de ligens 
+
         public grille()
         {
             for (int i = 0; i < horizontal; i++)
@@ -18,6 +19,7 @@
                 }
             }
         }
+
         // on ajoute un bateau selon une cellule de départ et une direction 
         public bool ajoutBateau(bateau bateau, cellule cellule, direction direction)
         {
@@ -64,6 +66,7 @@
                     {
                         return false;
                     }
+
                 case direction.haut:
                     //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
                     if (vertical - taille >= 0)
@@ -95,6 +98,7 @@
                     {
                         return false;
                     }
+
                 case direction.gauche:
                     if (horizontal - taille >= 0)
                     {
@@ -125,6 +129,7 @@
                     {
                         return false;
                     }
+
                 case direction.droite:
                     if (horizontal - taille <= 0)
                     {
