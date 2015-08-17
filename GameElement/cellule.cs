@@ -33,25 +33,30 @@
             // on fait un switch sur l'état des cellules
             switch (this.etat)
             {
+                //si il n'y a rien sur l'eau
                 case etat.eau:
                     this.etat = etat.plouf;
                     return 3;
-                    // et du bateau 
+                //si il y a un bateau 
                 case etat.bateau:
-                    // l'état est a "boum" pour dire que le bateau a ete touché
+                    // on passe l'état à "boum" pour dire que le bateau a ete touché
                     this.etat = etat.boum;
+                    //si le bateau coule
                     if (this.bateau.toucher())
                     {
-                        // si le bateau est touche alors on renvoi "1"
+                        // alors on renvoi "1"
                         return 1;
                     }
+                    //sinon c'est qu'il doit encore être toucher avant de couler
                     else
                     {
-                        // si le bateau n'est pas touché on renvoie "2" 
+                        // alors on renvoie "2" 
                         return 2;
                     }
+                //si la case à déjà été jouée
                 case etat.plouf:
                 case etat.boum:
+                    // alors on renvoie "4" 
                     return 4;
                 default:
                     return 5;
