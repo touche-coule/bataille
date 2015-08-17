@@ -15,28 +15,30 @@
             // une cellule est definie par son ordonnée et son abcisse 
             this.horizontal = horizontal;
             this.vertical = vertical;
-            // on initialise les cellules à false pour dire qu'elles sont inutilisées
+            // on signale l'état de la cellule à "eau" pour dire qu'elle est vide 
             this.etat = etat.eau;
-            // on assigne un false a la cellule pour dire qu'elle n'est pas touchée
+           
         }
         // créetion d'une methode pour ajouter des bateaux 
         public void ajoutBateau(bateau bateau)
         {
             // on ajoute un bateau 
             this.bateau = bateau;
-            // on prévient que la case est utilisée en mettant assignement à true
+            // on prévient que la case est utilisée en mettant l'étt à "bateau "
             this.etat = etat.bateau;
         }
         //methode pour le lancement des attaques
         public int attaque()
         {
-
+            // on fait un switch sur l'état des cellules
             switch (this.etat)
             {
                 case etat.eau:
                     this.etat = etat.plouf;
                     return 3;
+                    // et du bateau 
                 case etat.bateau:
+                    // l'état est a "boum" pour dire que le bateau a ete touché
                     this.etat = etat.boum;
                     if (this.bateau.toucher())
                     {
@@ -45,7 +47,7 @@
                     }
                     else
                     {
-                        // si la cellule est assignée à un bateau alors on retourne "2"
+                        // si le bateau n'est pas touché on renvoie "2" 
                         return 2;
                     }
                 case etat.plouf:
