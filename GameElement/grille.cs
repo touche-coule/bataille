@@ -37,7 +37,7 @@
                     // on fait une boucle pour la taille du bateau  
                     for (int i = 0; i < taille; i++)
                     {
-                        if (!tab[horizontal, i].used)
+                        if (tab[horizontal, i].etat!=etat.eau)
                         {
                             ok = false;
                         }
@@ -73,7 +73,7 @@
                     bool ok = true;
                     for (int i = 0; i < taille; i--)
                     {
-                        if (!tab[horizontal, i].used)
+                        if (tab[horizontal, i].etat != etat.eau)
                         {
                             ok = false;
                         }
@@ -106,7 +106,7 @@
                     bool ok = true;
                     for (int i = 0; i < taille; i--)
                     {
-                        if (!tab[i, horizontal].used)
+                        if (tab[horizontal, i].etat != etat.eau)
                         {
                             ok = false;
                         }
@@ -139,7 +139,7 @@
                     bool ok = true;
                     for (int i = 0; i < taille; i++)
                     {
-                        if (!tab[i, horizontal].used)
+                        if (tab[horizontal, i].etat != etat.eau)
                         {
                             ok = false;
                         }
