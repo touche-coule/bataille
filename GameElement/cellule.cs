@@ -47,10 +47,12 @@
                     }
                     else
                     {
-                        // si le bateau n'est pas touché on renvoie "2" 
+                        
                         return 2;
                     }
+                   
                 case etat.plouf:
+                   
                 case etat.boum:
                     return 4;
                 default:
