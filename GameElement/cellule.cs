@@ -17,7 +17,7 @@
             this.vertical = vertical;
             // on signale l'état de la cellule à "eau" pour dire qu'elle est vide 
             this.etat = etat.eau;
-           
+
         }
         // créetion d'une methode pour ajouter des bateaux 
         public void ajoutBateau(bateau bateau)
@@ -50,19 +50,11 @@
                     //sinon c'est qu'il doit encore être toucher avant de couler
                     else
                     {
-<<<<<<< HEAD
-                        
-                        return 2;
-                    }
-                   
-=======
                         // alors on renvoie "2" 
                         return 2;
                     }
                 //si la case à déjà été jouée
->>>>>>> origin/master
                 case etat.plouf:
-                   
                 case etat.boum:
                     // alors on renvoie "4" 
                     return 4;
