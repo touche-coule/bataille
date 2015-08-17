@@ -26,143 +26,137 @@
             int horizontal = cellule.horizontal;
             // on vérifie le placement d'un bateau en position verticale vers le bas 
 
-            if (direction == direction.bas)
+            switch (direction)
             {
-                //on vérifie si il y a asser de place pour le placement du bateau 
-                // la taille du bateau + la valeur de la cellule de départ ne peut dépasser la longueur totale de la colonne
-                if (vertical + taille <= 10)
-                {
-                    // on initialise une variable bool à true 
-                    bool ok = true;
-                    // on fait une boucle pour la taille du bateau  
-                    for (int i = 0; i < taille; i++)
+                case direction.bas:
+                    //on vérifie si il y a asser de place pour le placement du bateau 
+                    // la taille du bateau + la valeur de la cellule de départ ne peut dépasser la longueur totale de la colonne
+                    if (vertical + taille <= 10)
                     {
-                        if (tab[horizontal, i].etat!=etat.eau)
-                        {
-                            ok = false;
-                        }
-                    }
-
-                    if (ok)
-                    {
-                        // on fait une boucle pour la taille du bateau
+                        // on initialise une variable bool à true 
+                        bool ok = true;
+                        // on fait une boucle pour la taille du bateau  
                         for (int i = 0; i < taille; i++)
                         {
-                            // on place le bateau 
-                            tab[horizontal, i].ajoutBateau(bateau);
-
+                            if (tab[horizontal, i].etat != etat.eau)
+                            {
+                                ok = false;
+                            }
                         }
-                        return true;
+
+                        if (ok)
+                        {
+                            // on fait une boucle pour la taille du bateau
+                            for (int i = 0; i < taille; i++)
+                            {
+                                // on place le bateau 
+                                tab[horizontal, i].ajoutBateau(bateau);
+
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
                         return false;
                     }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            if (direction == direction.haut)
-            {
-                //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
-                if (vertical - taille >= 0)
-                {
-                    bool ok = true;
-                    for (int i = 0; i < taille; i--)
+                case direction.haut:
+                    //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
+                    if (vertical - taille >= 0)
                     {
-                        if (tab[horizontal, i].etat != etat.eau)
-                        {
-                            ok = false;
-                        }
-                    }
-
-                    if (ok)
-                    {
+                        bool ok = true;
                         for (int i = 0; i < taille; i--)
                         {
-                            tab[horizontal, i].ajoutBateau(bateau);
-
+                            if (tab[horizontal, i].etat != etat.eau)
+                            {
+                                ok = false;
+                            }
                         }
-                        return true;
+
+                        if (ok)
+                        {
+                            for (int i = 0; i < taille; i--)
+                            {
+                                tab[horizontal, i].ajoutBateau(bateau);
+
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
                         return false;
                     }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            if (direction == direction.gauche)
-            {
-                if (horizontal - taille >= 0)
-                {
-                    bool ok = true;
-                    for (int i = 0; i < taille; i--)
+                case direction.gauche:
+                    if (horizontal - taille >= 0)
                     {
-                        if (tab[horizontal, i].etat != etat.eau)
-                        {
-                            ok = false;
-                        }
-                    }
-
-                    if (ok)
-                    {
+                        bool ok = true;
                         for (int i = 0; i < taille; i--)
                         {
-                            tab[i, horizontal].ajoutBateau(bateau);
-
+                            if (tab[horizontal, i].etat != etat.eau)
+                            {
+                                ok = false;
+                            }
                         }
-                        return true;
+
+                        if (ok)
+                        {
+                            for (int i = 0; i < taille; i--)
+                            {
+                                tab[i, horizontal].ajoutBateau(bateau);
+
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
                         return false;
                     }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            if (direction == direction.droite)
-            {
-                if (horizontal - taille <= 0)
-                {
-                    bool ok = true;
-                    for (int i = 0; i < taille; i++)
+                case direction.droite:
+                    if (horizontal - taille <= 0)
                     {
-                        if (tab[horizontal, i].etat != etat.eau)
-                        {
-                            ok = false;
-                        }
-                    }
-
-                    if (ok)
-                    {
+                        bool ok = true;
                         for (int i = 0; i < taille; i++)
                         {
-                            tab[i, horizontal].ajoutBateau(bateau);
-
+                            if (tab[horizontal, i].etat != etat.eau)
+                            {
+                                ok = false;
+                            }
                         }
-                        return true;
+
+                        if (ok)
+                        {
+                            for (int i = 0; i < taille; i++)
+                            {
+                                tab[i, horizontal].ajoutBateau(bateau);
+
+                            }
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
                         return false;
                     }
-                }
-                else
-                {
+                default:
                     return false;
-                }
             }
         }
     }

@@ -51,6 +51,8 @@
                 case etat.plouf:
                 case etat.boum:
                     return 4;
+                default:
+                    return 5;
             }
         }
     }
