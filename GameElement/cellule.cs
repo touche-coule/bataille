@@ -19,6 +19,7 @@
             this.etat = etat.eau;
 
         }
+
         // créetion d'une methode pour ajouter des bateaux 
         public void ajoutBateau(bateau bateau)
         {
@@ -27,6 +28,7 @@
             // on prévient que la case est utilisée en mettant l'étt à "bateau "
             this.etat = etat.bateau;
         }
+
         //methode pour le lancement des attaques
         public int attaque()
         {
@@ -37,6 +39,7 @@
                 case etat.eau:
                     this.etat = etat.plouf;
                     return 3;
+
                 //si il y a un bateau 
                 case etat.bateau:
                     // on passe l'état à "boum" pour dire que le bateau a ete touché
@@ -53,11 +56,13 @@
                         // alors on renvoie "2" 
                         return 2;
                     }
+
                 //si la case à déjà été jouée
                 case etat.plouf:
                 case etat.boum:
                     // alors on renvoie "4" 
                     return 4;
+
                 default:
                     return 5;
             }
