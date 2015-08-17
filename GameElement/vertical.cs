@@ -1,5 +1,6 @@
 ﻿namespace GameElement
 {
+    // on crée un enum pour le nomage des colonnes avec des lettres 
     public enum vertical
     {
         a = 1,

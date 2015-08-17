@@ -1,5 +1,6 @@
 ﻿namespace GameElement
 {
+    //on crée un enum reprenant les noms des divers bateaux 
     public enum type
     {
         porte_avion,
