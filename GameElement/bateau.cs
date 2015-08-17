@@ -5,6 +5,7 @@
     {
         //le bateau est definit par son nom , sa taille , s'il est touché ou coulé
         public int taille { get; set; }
+        // on va chercher le nom du bateau dans une liste "enum appelée "type"
         public type nom { get; set; }
         public bool coulé { get; set; }
         public int touché { get; set; }
