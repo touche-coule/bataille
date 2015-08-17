@@ -54,14 +54,17 @@
                         }
                         return true;
                     }
-
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
                     return false;
                 }
             }
+
             if (direction == direction.haut)
             {
                 //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
@@ -85,8 +88,10 @@
                         }
                         return true;
                     }
-
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
@@ -96,7 +101,6 @@
 
             if (direction == direction.gauche)
             {
-
                 if (horizontal - taille >= 0)
                 {
                     bool ok = true;
@@ -117,17 +121,19 @@
                         }
                         return true;
                     }
-
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
                     return false;
                 }
             }
+
             if (direction == direction.droite)
             {
-
                 if (horizontal - taille <= 0)
                 {
                     bool ok = true;
@@ -148,17 +154,17 @@
                         }
                         return true;
                     }
-
-
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
                     return false;
                 }
             }
-
-            //string str = ((DocumentTypes)value).ToString();
-
         }
     }
 }
+//string str = ((DocumentTypes)value).ToString();
