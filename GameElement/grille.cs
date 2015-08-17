@@ -14,18 +14,18 @@
             {
                 for (int j = 0; j < vertical; j++)
                 {
-                    tab[i,j] = new cellule(i,j);
+                    tab[i, j] = new cellule(i, j);
                 }
             }
         }
         // on ajoute un bateau selon une cellule de départ et une direction 
-        public bool ajoutBateau(bateau bateau, cellule cellule, direction direction )
+        public bool ajoutBateau(bateau bateau, cellule cellule, direction direction)
         {
             int taille = bateau.taille;
             int vertical = cellule.vertical;
             int horizontal = cellule.horizontal;
             // on vérifie le placement d'un bateau en position verticale vers le bas 
-           
+
             if (direction == direction.bas)
             {
                 //on vérifie si il y a asser de place pour le placement du bateau 
@@ -50,18 +50,19 @@
                         {
                             // on place le bateau 
                             tab[horizontal, i].ajoutBateau(bateau);
-                           
+
                         }
                         return true;
                     }
-                   
+
 
                 }
                 else
                 {
                     return false;
                 }
-                 if (direction == direction.haut)
+            }
+            if (direction == direction.haut)
             {
                 //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
                 if (vertical - taille >= 0)
@@ -80,21 +81,22 @@
                         for (int i = 0; i < taille; i--)
                         {
                             tab[horizontal, i].ajoutBateau(bateau);
-                           
+
                         }
                         return true;
                     }
-                   
+
 
                 }
                 else
                 {
                     return false;
                 }
+            }
 
-                       if (direction == direction.gauche)
+            if (direction == direction.gauche)
             {
-               
+
                 if (horizontal - taille >= 0)
                 {
                     bool ok = true;
@@ -111,20 +113,21 @@
                         for (int i = 0; i < taille; i--)
                         {
                             tab[i, horizontal].ajoutBateau(bateau);
-                           
+
                         }
                         return true;
                     }
-                   
+
 
                 }
                 else
                 {
                     return false;
                 }
-                             if (direction == direction.droite)
+            }
+            if (direction == direction.droite)
             {
-                
+
                 if (horizontal - taille <= 0)
                 {
                     bool ok = true;
@@ -141,11 +144,11 @@
                         for (int i = 0; i < taille; i++)
                         {
                             tab[i, horizontal].ajoutBateau(bateau);
-                           
+
                         }
                         return true;
                     }
-                   
+
 
                 }
                 else
