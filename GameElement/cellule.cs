@@ -9,7 +9,7 @@
         public bateau bateau { get; set; }
         public etat etat { get; set; }
 
-        public cellule(int horizontal, int vertical)
+        public cellule(int vertical, int horizontal)
         {
             // on initialise les variables de la classe
             // une cellule est definie par son ordonnée et son abcisse 

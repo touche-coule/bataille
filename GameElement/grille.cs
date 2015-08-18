@@ -3,14 +3,55 @@
     public class grille
     {
         //on initialise une grille avec 10 lignes et 10 colonnes
-        const int horizontal = 10;
-        const int vertical = 10;
+        public const int horizontal = 10;
+
+
+        public const int vertical = 10;
+
+
+
         private bateau porteAvion = new bateau(type.porte_avion, 5);
+
+        public bateau PorteAvion
+        {
+            get { return porteAvion; }
+            set { porteAvion = value; }
+        }
         private bateau croiseur = new bateau(type.croiseur, 4);
+
+        public bateau Croiseur
+        {
+            get { return croiseur; }
+            set { croiseur = value; }
+        }
         private bateau contreTorpilleur = new bateau(type.contre_torpilleur, 3);
+
+        public bateau ContreTorpilleur
+        {
+            get { return contreTorpilleur; }
+            set { contreTorpilleur = value; }
+        }
         private bateau sousMarin = new bateau(type.sous_marin, 3);
+
+        public bateau SousMarin
+        {
+            get { return sousMarin; }
+            set { sousMarin = value; }
+        }
         private bateau torpilleur1 = new bateau(type.torpilleur, 2);
+
+        public bateau Torpilleur1
+        {
+            get { return torpilleur1; }
+            set { torpilleur1 = value; }
+        }
         private bateau torpilleur2 = new bateau(type.torpilleur, 2);
+
+        public bateau Torpilleur2
+        {
+            get { return torpilleur2; }
+            set { torpilleur2 = value; }
+        }
         //la grilles contient des cellules qui ont une ordonnée et une abcisse
         public cellule[,] tab = new cellule[horizontal, vertical];
         // on crée la grille avec le nombre de colonnes et de ligens 
@@ -39,14 +80,14 @@
                 case direction.bas:
                     //on vérifie si il y a asser de place pour le placement du bateau 
                     // la taille du bateau + la valeur de la cellule de départ ne peut dépasser la longueur totale de la colonne
-                    if (vertical + taille <= 10)
+                    if (horizontal + taille <= 10)
                     {
                         // on initialise une variable bool à true 
                         bool ok = true;
                         // on fait une boucle pour la taille du bateau  
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[horizontal, i].etat != etat.eau)
+                            if (tab[vertical, horizontal+i].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -58,7 +99,7 @@
                             for (int i = 0; i < taille; i++)
                             {
                                 // on place le bateau 
-                                tab[horizontal, i].ajoutBateau(bateau);
+                                tab[vertical, horizontal + i].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -75,12 +116,12 @@
 
                 case direction.haut:
                     //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
-                    if (vertical - taille >= 0)
+                    if (horizontal - taille >= 0)
                     {
                         bool ok = true;
-                        for (int i = 0; i < taille; i--)
+                        for (int i = 0; i < taille; i++)
                         {
-                            if (tab[horizontal, i].etat != etat.eau)
+                            if (tab[vertical,horizontal - i].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -88,9 +129,9 @@
 
                         if (ok)
                         {
-                            for (int i = 0; i < taille; i--)
+                            for (int i = 0; i < taille; i++)
                             {
-                                tab[horizontal, i].ajoutBateau(bateau);
+                                tab[vertical, horizontal - i].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -106,12 +147,12 @@
                     }
 
                 case direction.gauche:
-                    if (horizontal - taille >= 0)
+                    if (vertical - taille >= 0)
                     {
                         bool ok = true;
-                        for (int i = 0; i < taille; i--)
+                        for (int i = 0; i < taille; i++)
                         {
-                            if (tab[horizontal, i].etat != etat.eau)
+                            if (tab[vertical-i, horizontal].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -119,9 +160,9 @@
 
                         if (ok)
                         {
-                            for (int i = 0; i < taille; i--)
+                            for (int i = 0; i < taille; i++)
                             {
-                                tab[i, horizontal].ajoutBateau(bateau);
+                                tab[vertical-i, horizontal].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -137,12 +178,12 @@
                     }
 
                 case direction.droite:
-                    if (horizontal - taille <= 0)
+                    if (vertical + taille <= 10)
                     {
                         bool ok = true;
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[horizontal, i].etat != etat.eau)
+                            if (tab[vertical+i, horizontal].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -152,7 +193,7 @@
                         {
                             for (int i = 0; i < taille; i++)
                             {
-                                tab[i, horizontal].ajoutBateau(bateau);
+                                tab[vertical+i, horizontal].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -172,4 +213,3 @@
         }
     }
 }
-//string str = ((DocumentTypes)value).ToString();
