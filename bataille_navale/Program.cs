@@ -14,9 +14,11 @@ namespace bataille_navale
             joueur joueur1 = new joueur(nom1);
             joueur joueur2 = new joueur(nom2);
 
-            Console.WriteLine(joueur1.grille.tab.Length.ToString());
-            Console.ReadKey();
-
+            Console.WriteLine("Mise en place des bateaux de {0}", joueur1.Pseudo);
+            Console.WriteLine("A partir d'où voulez-vous placer votre porte avions? ");
+            string position = Console.ReadLine();
+            Console.WriteLine("Vers quel coté? [gauche/droite/haut/bas] ");
+            string direction = Console.ReadLine();
         }
     }
 }

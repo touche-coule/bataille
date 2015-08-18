@@ -5,6 +5,12 @@
         //on initialise une grille avec 10 lignes et 10 colonnes
         const int horizontal = 10;
         const int vertical = 10;
+        private bateau porteAvion = new bateau(type.porte_avion, 5);
+        private bateau croiseur = new bateau(type.croiseur, 4);
+        private bateau contreTorpilleur = new bateau(type.contre_torpilleur, 3);
+        private bateau sousMarin = new bateau(type.sous_marin, 3);
+        private bateau torpilleur1 = new bateau(type.torpilleur, 2);
+        private bateau torpilleur2 = new bateau(type.torpilleur, 2);
         //la grilles contient des cellules qui ont une ordonnée et une abcisse
         public cellule[,] tab = new cellule[horizontal, vertical];
         // on crée la grille avec le nombre de colonnes et de ligens 
