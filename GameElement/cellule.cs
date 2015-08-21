@@ -4,17 +4,17 @@
     public class cellule
     {
         //on place les differents attributs afin de pouvoir y faire appel 
-        public int horizontal { get; set; }
-        public int vertical { get; set; }
+        public int y { get; set; }
+        public int x { get; set; }
         public bateau bateau { get; set; }
         public etat etat { get; set; }
 
-        public cellule(int vertical, int horizontal)
+        public cellule(int y, int x)
         {
             // on initialise les variables de la classe
             // une cellule est definie par son ordonnée et son abcisse 
-            this.horizontal = horizontal;
-            this.vertical = vertical;
+            this.y = y;
+            this.x = x;
             // on signale l'état de la cellule à "eau" pour dire qu'elle est vide 
             this.etat = etat.eau;
 

@@ -1,4 +1,7 @@
-﻿namespace GameElement
+﻿///<summary>
+///Décrit un bateau
+///</summary>
+namespace GameElement
 {
     //on crée un bateau
     public class bateau

@@ -19,8 +19,12 @@ namespace bataille_navale
             joueur joueur1 = new joueur("Flink");
             joueur joueur2 = new joueur("Plop");
 
-            tools.PutBoat(joueur1);
-            tools.PutBoat(joueur2);
+            Random rnd = new Random();
+
+            tools.PutBoatAuto(joueur1, rnd);
+            Console.Clear();
+            tools.PutBoatAuto(joueur2, rnd);
+            Console.Clear();
 
             joueur current = joueur1;
             do
@@ -29,13 +33,22 @@ namespace bataille_navale
                 {
                     if (joueur1.grille.PorteAvion.coulé && joueur1.grille.SousMarin.coulé && joueur1.grille.Croiseur.coulé && joueur1.grille.ContreTorpilleur.coulé && joueur1.grille.Torpilleur1.coulé && joueur1.grille.Torpilleur2.coulé)
                     {
+                        Console.Clear();
+                        views.ShowGrid(joueur1, joueur2);
                         Console.WriteLine("{0} a gagné !", joueur2.Pseudo);
+                        Console.ReadKey();
                         break;
                     }
                     else
                     {
-                        views.ShowGrid(joueur2); 
-                        int retour = tools.Coup(joueur2);
+                        views.ShowGrid(joueur1, joueur2);
+                        Console.WriteLine("\n{0}, à vouz de jouer !", current.Pseudo);
+                        Console.WriteLine("-------------------------------------------");
+                        //int retour = tools.Coup(joueur2);
+                        System.Threading.Thread.Sleep(250);
+                        int retour = tools.CoupAuto(joueur2, rnd);
+                        current = joueur2;
+                        Console.Clear();
 
                         switch (retour)
                         {
@@ -55,13 +68,21 @@ namespace bataille_navale
                 {
                     if (joueur2.grille.PorteAvion.coulé && joueur2.grille.SousMarin.coulé && joueur2.grille.Croiseur.coulé && joueur2.grille.ContreTorpilleur.coulé && joueur2.grille.Torpilleur1.coulé && joueur2.grille.Torpilleur2.coulé)
                     {
+                        Console.Clear();
+                        views.ShowGrid(joueur1, joueur2);
                         Console.WriteLine("{0} a gagné !", joueur1.Pseudo);
+                        Console.ReadKey();
                         break;
                     }
                     else
                     {
-                        views.ShowGrid(joueur1);
-                        int retour = tools.Coup(joueur1);
+                        views.ShowGrid(joueur1, joueur2);
+                        Console.WriteLine("\n{0}, à vouz de jouer !", current.Pseudo);
+                        Console.WriteLine("-------------------------------------------");
+                        System.Threading.Thread.Sleep(250);
+                        int retour = tools.CoupAuto(joueur1, rnd);
+                        current = joueur1;
+                        Console.Clear();
 
                         switch (retour)
                         {

@@ -58,11 +58,11 @@
 
         public grille()
         {
-            for (int i = 0; i < horizontal; i++)
+            for (int y = 0; y < horizontal; y++)
             {
-                for (int j = 0; j < vertical; j++)
+                for (int x = 0; x < vertical; x++)
                 {
-                    tab[i, j] = new cellule(i, j);
+                    tab[y, x] = new cellule(y, x);
                 }
             }
         }
@@ -71,8 +71,8 @@
         public bool ajoutBateau(bateau bateau, cellule cellule, direction direction)
         {
             int taille = bateau.taille;
-            int vertical = cellule.vertical;
-            int horizontal = cellule.horizontal;
+            int x = cellule.x;
+            int y = cellule.y;
             // on vérifie le placement d'un bateau en position verticale vers le bas 
 
             switch (direction)
@@ -80,14 +80,14 @@
                 case direction.bas:
                     //on vérifie si il y a asser de place pour le placement du bateau 
                     // la taille du bateau + la valeur de la cellule de départ ne peut dépasser la longueur totale de la colonne
-                    if (horizontal + taille <= 10)
+                    if (y + taille <= 10)
                     {
                         // on initialise une variable bool à true 
                         bool ok = true;
                         // on fait une boucle pour la taille du bateau  
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[vertical, horizontal+i].etat != etat.eau)
+                            if (tab[y+i, x].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -99,7 +99,7 @@
                             for (int i = 0; i < taille; i++)
                             {
                                 // on place le bateau 
-                                tab[vertical, horizontal + i].ajoutBateau(bateau);
+                                tab[y+i, x].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -116,12 +116,12 @@
 
                 case direction.haut:
                     //la taille de vérification doit être inversée du fait qu'on remonte vers la cellule 0 
-                    if (horizontal - taille >= 0)
+                    if (y - taille >= 0)
                     {
                         bool ok = true;
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[vertical,horizontal - i].etat != etat.eau)
+                            if (tab[y-i,x].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -131,7 +131,7 @@
                         {
                             for (int i = 0; i < taille; i++)
                             {
-                                tab[vertical, horizontal - i].ajoutBateau(bateau);
+                                tab[y-i, x].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -147,12 +147,12 @@
                     }
 
                 case direction.gauche:
-                    if (vertical - taille >= 0)
+                    if (x - taille >= 0)
                     {
                         bool ok = true;
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[vertical-i, horizontal].etat != etat.eau)
+                            if (tab[y, x-i].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -162,7 +162,7 @@
                         {
                             for (int i = 0; i < taille; i++)
                             {
-                                tab[vertical-i, horizontal].ajoutBateau(bateau);
+                                tab[y, x-i].ajoutBateau(bateau);
 
                             }
                             return true;
@@ -178,12 +178,12 @@
                     }
 
                 case direction.droite:
-                    if (vertical + taille <= 10)
+                    if (x + taille <= 10)
                     {
                         bool ok = true;
                         for (int i = 0; i < taille; i++)
                         {
-                            if (tab[vertical+i, horizontal].etat != etat.eau)
+                            if (tab[y, x+i].etat != etat.eau)
                             {
                                 ok = false;
                             }
@@ -193,7 +193,7 @@
                         {
                             for (int i = 0; i < taille; i++)
                             {
-                                tab[vertical+i, horizontal].ajoutBateau(bateau);
+                                tab[y, x+i].ajoutBateau(bateau);
 
                             }
                             return true;
